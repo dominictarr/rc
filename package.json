@@ -16,7 +16,7 @@
   "author": "Dominic Tarr <dominic.tarr@gmail.com> (dominictarr.com)",
   "license": "BSD",
   "dependencies": {
-    "config-chain": "~0.3.0",
+    "config-chain": "~0.3.2",
     "optimist": "~0.3.4"
   }
 }
