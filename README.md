@@ -35,6 +35,8 @@ so that sources earlier in this list override later ones.
 # Formats
 
 Configuration files may be in either `json` or `ini` format.
+Since ini, and env variables do not have a standard for types,
+your application needs be prepared for strings.
 
 # License
 
