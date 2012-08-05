@@ -29,7 +29,7 @@ Given your application name, rc will look in all the obvious places for configur
   * `/etc/${APPNAME}/config`
   * the defaults object you passed in.
 
-All configuration sources that where found will be assembled into a prototype chain,
+All configuration sources that where found will be flattened into one object,
 so that sources earlier in this list override later ones.
 
 # Formats
