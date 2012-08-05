@@ -5,7 +5,6 @@ var join = require('path').join
 var home = process.env.HOME
 var etc = '/etc'
 
-console.log(argv)
 module.exports = function (name, defaults) {
   if(!name)
     throw new Error('nameless configuration fail')
