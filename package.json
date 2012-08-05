@@ -18,5 +18,8 @@
   "dependencies": {
     "config-chain": "~0.3.2",
     "optimist": "~0.3.4"
+  },
+  "scripts": {
+    "test": "node test.js"
   }
 }
