@@ -1,6 +1,6 @@
 {
   "name": "rc",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "hardwired configuration loader",
   "main": "index.js",
   "scripts": {
