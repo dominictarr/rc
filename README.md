@@ -4,7 +4,7 @@ the non configurable configuration loader for lazy people.
 
 # Usage
 
-the only option is to pass rc the name of your app, and your default confugiration.
+the only option is to pass rc the name of your app, and your default configuration.
 
 ```
   var rc = require('rc')(appname, {
