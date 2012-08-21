@@ -3,7 +3,8 @@ var argv = require('optimist').argv
 var cc   = require('config-chain')
 var join = require('path').join
 var etc = '/etc'
-var home = process.platform === "win32"
+var win = process.platform === "win32"
+var home = win
            ? process.env.USERPROFILE
            : process.env.HOME
 
@@ -19,8 +20,8 @@ module.exports = function (name, defaults) {
     join(home, '.' + name, 'config'),
     join(home, '.config', name),
     join(home, '.config', name, 'config'),
-    join(etc, name + 'rc'),
-    join(etc, name, 'config'),
+    win ? null : join(etc, name + 'rc'),
+    win ? null : join(etc, name, 'config'),
     defaults
   ).snapshot
 
