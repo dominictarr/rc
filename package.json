@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {"type": "git", "url": "https://github.com/dominictarr/rc.githttps://github.com/dominictarr/rc.git"},
+  "repository": {"type": "git", "url": "https://github.com/dominictarr/rc.git"},
   "keywords": [
     "config",
     "rc",
