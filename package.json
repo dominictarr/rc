@@ -3,6 +3,7 @@
   "version": "0.0.5",
   "description": "hardwired configuration loader",
   "main": "index.js",
+  "browserify": "browser.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
