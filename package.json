@@ -18,7 +18,8 @@
   "license": "BSD",
   "dependencies": {
     "config-chain": "~0.3",
-    "optimist": "~0.3.4"
+    "optimist": "~0.3.4",
+    "deep-extend": "~0.2.5"
   },
   "scripts": {
     "test": "node test.js"
