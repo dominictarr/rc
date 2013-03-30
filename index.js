@@ -1,4 +1,4 @@
-
+#! /usr/bin/env node
 var argv = require('optimist').argv
 var cc   = require('config-chain')
 var join = require('path').join
@@ -12,10 +12,13 @@ var home = win
 module.exports = function (name, defaults) {
   if(!name)
     throw new Error('nameless configuration fail')
-
+  defaults = (
+      'string' === typeof defaults
+    ? cc.json(defaults) : defaults
+    ) || {}
 
   return deepExtend.apply(null, [
-    typeof defaults === 'string' ? cc.json(defaults) : defaults,
+    defaults,
     win ? {} : cc.json(join(etc, name, 'config')),
     win ? {} : cc.json(join(etc, name + 'rc')),
     cc.json(join(home, '.config', name, 'config')),
@@ -26,4 +29,10 @@ module.exports = function (name, defaults) {
     cc.env(name + '_'),
     argv
   ])
+}
+
+if(!module.parent) {
+  console.log(
+    JSON.stringify(module.exports(process.argv[2]), false, 2)
+  )
 }
