@@ -25,7 +25,7 @@ module.exports = function (name, defaults) {
     cc.json(join(home, '.config', name)),
     cc.json(join(home, '.' + name, 'config')),
     cc.json(join(home, '.' + name + 'rc')),
-    cc.json(argv.config),
+    typeof argv.config === 'string' ? css.json(argv.config) : argv.config,
     cc.env(name + '_'),
     argv
   ])
