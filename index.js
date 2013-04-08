@@ -17,6 +17,18 @@ module.exports = function (name, defaults) {
     ? cc.json(defaults) : defaults
     ) || {}
 
+  var argvCopy,
+      argvConfig;
+
+  if (typeof argv.config !== 'object') {
+    argvCopy = argv
+    argvConfig = css.json(argv.config)
+  } else {
+    argvCopy = deepExtend({}, argv)
+    delete argvCopy.config
+    argvConfig = argv.config
+  }
+
   return deepExtend.apply(null, [
     defaults,
     win ? {} : cc.json(join(etc, name, 'config')),
@@ -25,9 +37,9 @@ module.exports = function (name, defaults) {
     cc.json(join(home, '.config', name)),
     cc.json(join(home, '.' + name, 'config')),
     cc.json(join(home, '.' + name + 'rc')),
-    cc.json(argv.config),
+    argvConfig,
     cc.env(name + '_'),
-    argv
+    argvCopy
   ])
 }
 
