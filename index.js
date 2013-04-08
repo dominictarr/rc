@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 var argv = require('optimist').argv
-var cc   = require('config-chain')
+var cc   = require('./lib/utils')
 var join = require('path').join
 var deepExtend = require('deep-extend')
 var etc = '/etc'

@@ -4,7 +4,7 @@ var assert = require('assert')
 
 process.env[n+'_envOption'] = 42
 
-var config = require('./')(n, {
+var config = require('../')(n, {
   option: true
 })
 

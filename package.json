@@ -5,9 +5,12 @@
   "main": "index.js",
   "browserify": "browser.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "set -e; node test/test.js; node test/ini.js"
   },
-  "repository": {"type": "git", "url": "https://github.com/dominictarr/rc.git"},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dominictarr/rc.git"
+  },
   "keywords": [
     "config",
     "rc",
@@ -18,11 +21,8 @@
   "author": "Dominic Tarr <dominic.tarr@gmail.com> (dominictarr.com)",
   "license": "BSD",
   "dependencies": {
-    "config-chain": "~0.3",
     "optimist": "~0.3.4",
-    "deep-extend": "~0.2.5"
-  },
-  "scripts": {
-    "test": "node test.js"
+    "deep-extend": "~0.2.5",
+    "ini": "~1.1.0"
   }
 }
