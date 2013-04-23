@@ -1,5 +1,4 @@
 #! /usr/bin/env node
-var argv = require('optimist').argv
 var cc   = require('./lib/utils')
 var join = require('path').join
 var deepExtend = require('deep-extend')
@@ -9,9 +8,11 @@ var home = win
            ? process.env.USERPROFILE
            : process.env.HOME
 
-module.exports = function (name, defaults) {
+module.exports = function (name, defaults, argv) {
   if(!name)
     throw new Error('nameless configuration fail')
+  if(!argv)
+    argv = require('optimist').argv
   defaults = (
       'string' === typeof defaults
     ? cc.json(defaults) : defaults
