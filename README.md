@@ -40,4 +40,4 @@ your application needs be prepared for strings.
 
 # License
 
-BSD
+BSD / MIT / Apache2
