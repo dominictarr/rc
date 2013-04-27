@@ -19,7 +19,7 @@
   ],
   "bin": "./index.js",
   "author": "Dominic Tarr <dominic.tarr@gmail.com> (dominictarr.com)",
-  "license": "BSD",
+  "licenses": ["BSD", "MIT", "Apache2"],
   "dependencies": {
     "optimist": "~0.3.4",
     "deep-extend": "~0.2.5",
