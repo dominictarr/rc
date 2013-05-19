@@ -18,6 +18,8 @@ module.exports = function (name, defaults, argv) {
     ? cc.json(defaults) : defaults
     ) || {}
 
+  var local = cc.find('.'+name+'rc')
+
   return deepExtend.apply(null, [
     defaults,
     win ? {} : cc.json(join(etc, name, 'config')),
@@ -26,7 +28,8 @@ module.exports = function (name, defaults, argv) {
     cc.json(join(home, '.config', name)),
     cc.json(join(home, '.' + name, 'config')),
     cc.json(join(home, '.' + name + 'rc')),
-    cc.json(argv.config),
+    cc.json(local || argv.config),
+    local ? {config: local} : null,
     cc.env(name + '_'),
     argv
   ])
