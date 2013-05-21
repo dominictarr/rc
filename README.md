@@ -21,6 +21,7 @@ Given your application name, rc will look in all the obvious places for configur
   * command line arguments (parsed by optimist)
   * enviroment variables prefixed with ${APPNAME}_
   * if you passed an option `--config file` then from that file
+  * a local `.${APPNAME}rc` or the first found looking in `./ ../ ../../ ../../../` etc. 
   * `$HOME/.${APPNAME}rc`
   * `$HOME/.${APPNAME}/config`
   * `$HOME/.config/${APPNAME}`
