@@ -1,5 +1,6 @@
 #! /usr/bin/env node
 var cc   = require('./lib/utils')
+var existsSync = require('fs').existsSync || require('path').existsSync
 var join = require('path').join
 var deepExtend = require('deep-extend')
 var etc = '/etc'
@@ -20,6 +21,10 @@ module.exports = function (name, defaults, argv) {
 
   var local = cc.find('.'+name+'rc')
 
+  var config = argv.rcconfig || argv.config
+  if (config && !existsSync(config))
+    throw new Error('The provided config file ' + config + ' does not exist.')
+
   return deepExtend.apply(null, [
     defaults,
     win ? {} : cc.json(join(etc, name, 'config')),
@@ -28,7 +33,7 @@ module.exports = function (name, defaults, argv) {
     cc.json(join(home, '.config', name)),
     cc.json(join(home, '.' + name, 'config')),
     cc.json(join(home, '.' + name + 'rc')),
-    cc.json(local || argv.config),
+    cc.json(local || config),
     local ? {config: local} : null,
     cc.env(name + '_'),
     argv

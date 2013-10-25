@@ -5,7 +5,7 @@
   "main": "index.js",
   "browserify": "browser.js",
   "scripts": {
-    "test": "set -e; node test/test.js; node test/ini.js"
+    "test": "set -e; for t in test/*.js; do node $t; done"
   },
   "repository": {
     "type": "git",

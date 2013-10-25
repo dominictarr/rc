@@ -38,6 +38,13 @@ Configuration files may be in either `json` or `ini` format.
 Since ini, and env variables do not have a standard for types,
 your application needs be prepared for strings.
 
+# Alternative `--config`
+
+In order to not clash with programs already looking for a `--config` in your command line arguments, you may specify
+`--rcconfig` instead to point to your config file.
+
+If `--rcconfig` is provided, the `--config` argument is ignored.
+
 # License
 
 BSD / MIT / Apache2
