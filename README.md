@@ -2,7 +2,7 @@
 
 The non-configurable configuration loader for lazy people.
 
-# Usage
+## Usage
 
 The only option is to pass rc the name of your app, and your default configuration.
 
@@ -16,7 +16,7 @@ var rc = require('rc')(appname, {
 
 ```
 
-# Standards
+## Standards
 
 Given your application name (`appname`), rc will look in all the obvious places for configuration.
 
@@ -35,14 +35,15 @@ Given your application name (`appname`), rc will look in all the obvious places 
 All configuration sources that were found will be flattened into one object,
 so that sources earlier in this list override later ones.
 
-# Formats
+## Formats
 
 Configuration files may be in either `json` or `ini` format.
 Since ini, and env variables do not have a standard for types,
 your application needs be prepared for strings.
 
-# Advanced Usage
 
+
+## Advanced Usage
 
 #### Pass in your own `argv`
 
@@ -53,6 +54,6 @@ require('rc', appname, { /* defaults */}, argvFixture);
 ```
 
 
-# License
+## License
 
 BSD / MIT / Apache2
