@@ -45,6 +45,22 @@ so that sources **earlier** in this list override later ones.
 
 Configuration files (e.g. `.appnamerc`) may be in either [json](http://json.org/example) or [ini](http://en.wikipedia.org/wiki/INI_file) format.  rc ignores file extensions of configuration files.  The example configurations below are equivalent:
 
+
+#### Formatted as `ini`
+
+```ini
+; You can include comments if you want.
+
+port=3000
+
+; `rc` has built-in support for ini sections, see?
+[views]
+  engine=jade
+
+; But only one-level deep.  So in this example, you can't do a sub-object inside of 'views'.
+; (More deeply nested objects ARE supported using the JSON format.)
+```
+
 #### Formatted as `json`
 
 ```json
@@ -56,16 +72,6 @@ Configuration files (e.g. `.appnamerc`) may be in either [json](http://json.org/
 }
 ```
 
-#### Formatted as `ini`
-```ini
-; You can include comments if you want.
-
-port=3000
-
-; `rc` has built-in support for ini sections, see?
-[views]
-  engine=jade
-```
 
 > Since ini, and env variables do not have a standard for types, your application needs be prepared for strings.
 
