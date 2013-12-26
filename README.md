@@ -7,7 +7,7 @@ The non-configurable configuration loader for lazy people.
 The only option is to pass rc the name of your app, and your default configuration.
 
 ```javascript
-var rc = require('rc')(appname, {
+var conf = require('rc')(appname, {
   //defaults go here.
   port: 2468,
 
@@ -15,11 +15,17 @@ var rc = require('rc')(appname, {
   views: {
     engine: 'jade'
   }
-})
-
-// Your configuration options => the `rc` object.
-
+});
 ```
+
+`rc` will return your configuration options merged with the defaults you specify.
+If you pass in a predefined defaults object, it will be mutated:
+
+```javascript
+var conf = {};
+require('rc', appname, conf);
+```
+
 
 ## Standards
 
@@ -86,6 +92,11 @@ You may pass in your own `argv` as the third argument to `rc`.  This may be usef
 ```javascript
 require('rc', appname, { /* defaults */}, argvFixture);
 ```
+
+
+## Note on Performance
+
+`rc` is running `fs.statSync`-- so make sure you don't use it in a hot code path (e.g. a request handler) 
 
 
 ## License
