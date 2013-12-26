@@ -35,11 +35,34 @@ Given your application name (`appname`), rc will look in all the obvious places 
 All configuration sources that were found will be flattened into one object,
 so that sources earlier in this list override later ones.
 
-## Formats
 
-Configuration files may be in either `json` or `ini` format.
-Since ini, and env variables do not have a standard for types,
-your application needs be prepared for strings.
+## Configuration File Formats
+
+Configuration files (e.g. `.appnamerc`) may be in either [json](http://json.org/example) or [ini](http://en.wikipedia.org/wiki/INI_file) format.
+
+#### Example `.appnamerc` in `json` format
+
+```json
+{
+  "views": {
+    "engine": "jade",
+  },
+  "port": 3000
+}
+```
+
+#### Example `.appnamerc` in `ini` format
+```ini
+; You can include comments if you want.
+
+port=3000
+
+; `rc` has built-in support for ini sections, see?
+[views]
+  engine=jade
+```
+
+> Since ini, and env variables do not have a standard for types, your application needs be prepared for strings.
 
 
 
