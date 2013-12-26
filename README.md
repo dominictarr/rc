@@ -6,11 +6,14 @@ The non-configurable configuration loader for lazy people.
 
 The only option is to pass rc the name of your app, and your default configuration.
 
-```
+```javascript
 var rc = require('rc')(appname, {
   //defaults go here.
   port: 2468
 })
+
+// Your configuration options => the `rc` object.
+
 ```
 
 # Standards
@@ -37,6 +40,18 @@ so that sources earlier in this list override later ones.
 Configuration files may be in either `json` or `ini` format.
 Since ini, and env variables do not have a standard for types,
 your application needs be prepared for strings.
+
+# Advanced Usage
+
+
+#### Pass in your own `argv`
+
+You may pass in your own `argv` as the third argument to `rc`.  This may be useful for writing tests.
+
+```javascript
+require('rc', appname, { /* defaults */}, argvFixture);
+```
+
 
 # License
 
