@@ -9,7 +9,12 @@ The only option is to pass rc the name of your app, and your default configurati
 ```javascript
 var rc = require('rc')(appname, {
   //defaults go here.
-  port: 2468
+  port: 2468,
+
+  //defaults which are objects will be merged, not replaced
+  views: {
+    engine: 'jade'
+  }
 })
 
 // Your configuration options => the `rc` object.
@@ -23,7 +28,7 @@ Given your application name (`appname`), rc will look in all the obvious places 
   * command line arguments (parsed by optimist)
   * environment variables prefixed with `${appname}_`
   * if you passed an option `--config file` then from that file
-  * a local `.${appname}rc` or the first found looking in `./ ../ ../../ ../../../` etc. 
+  * a local `.${appname}rc` or the first found looking in `./ ../ ../../ ../../../` etc.
   * `$HOME/.${appname}rc`
   * `$HOME/.${appname}/config`
   * `$HOME/.config/${appname}`
@@ -33,14 +38,14 @@ Given your application name (`appname`), rc will look in all the obvious places 
   * the defaults object you passed in.
 
 All configuration sources that were found will be flattened into one object,
-so that sources earlier in this list override later ones.
+so that sources **earlier** in this list override later ones.
 
 
 ## Configuration File Formats
 
-Configuration files (e.g. `.appnamerc`) may be in either [json](http://json.org/example) or [ini](http://en.wikipedia.org/wiki/INI_file) format.
+Configuration files (e.g. `.appnamerc`) may be in either [json](http://json.org/example) or [ini](http://en.wikipedia.org/wiki/INI_file) format.  rc ignores file extensions of configuration files.
 
-#### Example `.appnamerc` in `json` format
+#### Formatted as `json`
 
 ```json
 {
@@ -51,7 +56,7 @@ Configuration files (e.g. `.appnamerc`) may be in either [json](http://json.org/
 }
 ```
 
-#### Example `.appnamerc` in `ini` format
+#### Formatted as `ini`
 ```ini
 ; You can include comments if you want.
 
