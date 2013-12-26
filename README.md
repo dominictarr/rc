@@ -23,7 +23,7 @@ If you pass in a predefined defaults object, it will be mutated:
 
 ```javascript
 var conf = {};
-require('rc', appname, conf);
+require('rc')(appname, conf);
 ```
 
 
@@ -90,7 +90,7 @@ port=3000
 You may pass in your own `argv` as the third argument to `rc`.  This may be useful for writing tests.
 
 ```javascript
-require('rc', appname, { /* defaults */}, argvFixture);
+require('rc')(appname, defaults, argvFixture);
 ```
 
 
