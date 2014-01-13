@@ -87,10 +87,10 @@ port=3000
 
 #### Pass in your own `argv`
 
-You may pass in your own `argv` as the third argument to `rc`.  This may be useful for writing tests.
+You may pass in your own `argv` as the third argument to `rc`.  This is in case you want to [use your own command-line opts parser](https://github.com/dominictarr/rc/pull/12).
 
 ```javascript
-require('rc')(appname, defaults, argvFixture);
+require('rc')(appname, defaults, customArgvParser);
 ```
 
 
