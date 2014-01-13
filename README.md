@@ -55,26 +55,47 @@ Configuration files (e.g. `.appnamerc`) may be in either [json](http://json.org/
 #### Formatted as `ini`
 
 ```ini
-; You can include comments if you want.
+; You can include comments in `ini` format if you want.
 
-port=3000
+dependsOn=0.10.0
+
 
 ; `rc` has built-in support for ini sections, see?
-[views]
-  engine=jade
 
-; But only one-level deep.  So in this example, you can't do a sub-object inside of 'views'.
-; (More deeply nested objects ARE supported using the JSON format.)
+[commands]
+  www     = ./commands/www
+  console = ./commands/repl
+
+
+; You can even do nested sections
+
+[generators.options]
+  engine  = ejs
+
+[generators.modules]
+  new     = generate-new
+  engine  = generate-backend
+
 ```
 
 #### Formatted as `json`
 
 ```json
 {
-  "views": {
-    "engine": "jade"
+  "dependsOn": "0.10.0",
+  "commands": {
+    "www": "./commands/www",
+    "console": "./commands/repl"
   },
-  "port": 3000
+  "generators": {
+    "options": {
+      "engine": "ejs"
+    },
+    "modules": {
+      "new": "generate-new",
+      "backend": "generate-backend"
+    }
+  }
 }
 ```
 
