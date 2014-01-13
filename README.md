@@ -54,7 +54,7 @@ Configuration files (e.g. `.appnamerc`) may be in either [json](http://json.org/
 
 #### Formatted as `ini`
 
-```ini
+```
 ; You can include comments in `ini` format if you want.
 
 dependsOn=0.10.0
