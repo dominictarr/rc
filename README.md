@@ -31,7 +31,7 @@ require('rc')(appname, conf);
 
 Given your application name (`appname`), rc will look in all the obvious places for configuration.
 
-  * command line arguments (parsed by optimist)
+  * command line arguments (parsed by minimist)
   * environment variables prefixed with `${appname}_`
   * if you passed an option `--config file` then from that file
   * a local `.${appname}rc` or the first found looking in `./ ../ ../../ ../../../` etc.
