@@ -21,7 +21,7 @@
   "author": "Dominic Tarr <dominic.tarr@gmail.com> (dominictarr.com)",
   "licenses": ["BSD", "MIT", "Apache2"],
   "dependencies": {
-    "optimist": "~0.3.4",
+    "minimist": "~0.0.7",
     "deep-extend": "~0.2.5",
     "ini": "~1.1.0"
   }

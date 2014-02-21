@@ -12,7 +12,7 @@ module.exports = function (name, defaults, argv) {
   if(!name)
     throw new Error('nameless configuration fail')
   if(!argv)
-    argv = require('optimist').argv
+    argv = require('minimist')(process.argv.slice(2))
   defaults = (
       'string' === typeof defaults
     ? cc.json(defaults) : defaults
