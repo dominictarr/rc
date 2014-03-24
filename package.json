@@ -23,6 +23,7 @@
   "dependencies": {
     "minimist": "~0.0.7",
     "deep-extend": "~0.2.5",
+    "strip-json-comments": "0.1.x",
     "ini": "~1.1.0"
   }
 }

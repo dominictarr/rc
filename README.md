@@ -82,6 +82,7 @@ dependsOn=0.10.0
 
 ```json
 {
+  // You can even comment your JSON, if you want
   "dependsOn": "0.10.0",
   "commands": {
     "www": "./commands/www",
@@ -99,6 +100,7 @@ dependsOn=0.10.0
 }
 ```
 
+Comments are stripped from JSON config via [strip-json-comments](https://github.com/sindresorhus/strip-json-comments).
 
 > Since ini, and env variables do not have a standard for types, your application needs be prepared for strings.
 
