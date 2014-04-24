@@ -49,7 +49,7 @@ so that sources **earlier** in this list override later ones.
 
 ## Configuration File Formats
 
-Configuration files (e.g. `.appnamerc`) may be in either [json](http://json.org/example) or [ini](http://en.wikipedia.org/wiki/INI_file) format.  rc ignores file extensions of configuration files.  The example configurations below are equivalent:
+Configuration files (e.g. `.appnamerc`) may be in either [json](http://json.org/example) or [ini](http://en.wikipedia.org/wiki/INI_file) format. The example configurations below are equivalent:
 
 
 #### Formatted as `ini`
