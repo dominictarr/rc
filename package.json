@@ -1,6 +1,6 @@
 {
   "name": "rc",
-  "version": "0.3.5",
+  "version": "0.4.0",
   "description": "hardwired configuration loader",
   "main": "index.js",
   "browserify": "browser.js",
@@ -19,7 +19,11 @@
   ],
   "bin": "./index.js",
   "author": "Dominic Tarr <dominic.tarr@gmail.com> (dominictarr.com)",
-  "licenses": ["BSD", "MIT", "Apache2"],
+  "licenses": [
+    "BSD",
+    "MIT",
+    "Apache2"
+  ],
   "dependencies": {
     "minimist": "~0.0.7",
     "deep-extend": "~0.2.5",
