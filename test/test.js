@@ -29,3 +29,28 @@ console.log(customArgv)
 
 assert.equal(customArgv.option, false)
 assert.equal(customArgv.envOption, 24)
+
+var fs = require('fs')
+var path = require('path')
+var jsonrc = path.resolve('.' + n + 'rc');
+
+fs.writeFileSync(jsonrc, [
+  '{',
+    '// json overrides default',
+    '"option": false,',
+    '/* env overrides json */',
+    '"envOption": 24',
+  '}'
+].join('\n'));
+
+var commentedJSON = require('../')(n, {
+  option: true
+})
+
+fs.unlinkSync(jsonrc);
+
+console.log(commentedJSON)
+
+assert.equal(commentedJSON.option, false)
+assert.equal(commentedJSON.envOption, 42)
+assert.equal(commentedJSON.config, jsonrc)
