@@ -5,7 +5,7 @@
   "main": "index.js",
   "browserify": "browser.js",
   "scripts": {
-    "test": "set -e; node test/test.js; node test/ini.js"
+    "test": "set -e; node test/test.js; node test/ini.js; node test/nested-env-vars.js"
   },
   "repository": {
     "type": "git",
