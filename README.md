@@ -33,6 +33,7 @@ Given your application name (`appname`), rc will look in all the obvious places 
 
   * command line arguments (parsed by minimist)
   * environment variables prefixed with `${appname}_`
+    * or use "\_\_" to indicate nested properties <br/> _(e.g. `appname_foo__bar__baz` => `foo.bar.baz`)_
   * if you passed an option `--config file` then from that file
   * a local `.${appname}rc` or the first found looking in `./ ../ ../../ ../../../` etc.
   * `$HOME/.${appname}rc`
