@@ -28,8 +28,9 @@ module.exports = function (name, defaults, argv) {
     home ? cc.json(join(home, '.config', name)) : {},
     home ? cc.json(join(home, '.' + name, 'config')) : {},
     home ? cc.json(join(home, '.' + name + 'rc')) : {},
-    cc.json(local || argv.config),
+    cc.json(local),
     local ? {config: local} : null,
+    argv.config ? cc.json(argv.config) : null,
     cc.env(name + '_'),
     argv
   ])
