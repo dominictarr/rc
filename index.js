@@ -9,8 +9,8 @@ var home = win
            : process.env.HOME
 
 module.exports = function (name, defaults, argv) {
-  if(!name)
-    throw new Error('nameless configuration fail')
+  if('string' !== typeof name)
+    throw new Error('rc(name): name *must* be string')
   if(!argv)
     argv = require('minimist')(process.argv.slice(2))
   defaults = (
