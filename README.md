@@ -47,6 +47,14 @@ Given your application name (`appname`), rc will look in all the obvious places 
 All configuration sources that were found will be flattened into one object,
 so that sources **earlier** in this list override later ones.
 
+## Which files were loaded?
+
+The returned configuration object will have an non-enumerable array property `_rcfiles` that reports which files were loaded.
+
+```javascript
+var conf = require('rc')
+console.log('Loaded', conf._rcfiles)
+```
 
 ## Configuration File Formats
 
