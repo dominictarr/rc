@@ -20,30 +20,36 @@ module.exports = function (name, defaults, argv, parse) {
 
   parse = parse || cc.parse
 
-  function file () {
-    var content = cc.file.apply(null, arguments)
-    return content ? parse(content) : null
-  }
-
-  var local = cc.find('.'+name+'rc')
-
   var env = cc.env(name + '_')
 
-  return deepExtend.apply(null, [
-    defaults,
-    win ? {} : file(join(etc, name, 'config')),
-    win ? {} : file(join(etc, name + 'rc')),
-    home ? file(join(home, '.config', name, 'config')) : {},
-    home ? file(join(home, '.config', name)) : {},
-    home ? file(join(home, '.' + name, 'config')) : {},
-    home ? file(join(home, '.' + name + 'rc')) : {},
-    file(local),
-    local ? {config: local} : null,
-    env.config ? file(env.config) : null,
-    argv.config ? file(argv.config) : null,
+  var configs = [defaults]
+  var configFiles = []
+  function addConfigFile (file) {
+    var fileConfig = cc.file(file)
+    if (fileConfig) {
+      configs.push(parse(fileConfig))
+      configFiles.push(file)
+    }
+  }
+
+  // which files do we look at?
+  if (!win)
+   [join(etc, name, 'config'),
+    join(etc, name + 'rc')].forEach(addConfigFile)
+  if (home)
+   [join(home, '.config', name, 'config'),
+    join(home, '.config', name),
+    join(home, '.' + name, 'config'),
+    join(home, '.' + name + 'rc')].forEach(addConfigFile)
+  addConfigFile(cc.find('.'+name+'rc'))
+  if (env.config) addConfigFile(env.config)
+  if (argv.config) addConfigFile(argv.config)
+
+  return deepExtend.apply(null, configs.concat([
     env,
-    argv
-  ])
+    argv,
+    configFiles.length ? {configs: configFiles, config: configFiles[configFiles.length - 1]} : null,
+  ]))
 }
 
 if(!module.parent) {
