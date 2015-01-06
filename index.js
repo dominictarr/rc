@@ -9,34 +9,46 @@ var home = win
            : process.env.HOME
 
 module.exports = function (name, defaults, argv) {
+  var files = []
+
   if('string' !== typeof name)
     throw new Error('rc(name): name *must* be string')
   if(!argv)
     argv = require('minimist')(process.argv.slice(2))
   defaults = (
       'string' === typeof defaults
-    ? cc.json(defaults) : defaults
+    ? cc.json(files, defaults) : defaults
     ) || {}
 
   var local = cc.find('.'+name+'rc')
 
   var env = cc.env(name + '_')
 
-  return deepExtend.apply(null, [
+  var conf = deepExtend.apply(null, [
     defaults,
-    win ? {} : cc.json(join(etc, name, 'config')),
-    win ? {} : cc.json(join(etc, name + 'rc')),
-    home ? cc.json(join(home, '.config', name, 'config')) : {},
-    home ? cc.json(join(home, '.config', name)) : {},
-    home ? cc.json(join(home, '.' + name, 'config')) : {},
-    home ? cc.json(join(home, '.' + name + 'rc')) : {},
-    cc.json(local),
+    win ? {} : cc.json(files, join(etc, name, 'config')),
+    win ? {} : cc.json(files, join(etc, name + 'rc')),
+    home ? cc.json(files, join(home, '.config', name, 'config')) : {},
+    home ? cc.json(files, join(home, '.config', name)) : {},
+    home ? cc.json(files, join(home, '.' + name, 'config')) : {},
+    home ? cc.json(files, join(home, '.' + name + 'rc')) : {},
+    cc.json(files, local),
     local ? {config: local} : null,
-    env.config ? cc.json(env.config) : null,
-    argv.config ? cc.json(argv.config) : null,
+    env.config ? cc.json(files, env.config) : null,
+    argv.config ? cc.json(files, argv.config) : null,
     env,
     argv
   ])
+
+  // reverse the file list to be more in line with the readme
+  // i.e. so early entries in the list would have overridden later ones
+  files.reverse()
+
+  Object.defineProperty(conf, '_rcfiles', {
+    value: files
+  })
+
+  return conf
 }
 
 if(!module.parent) {
