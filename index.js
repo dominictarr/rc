@@ -18,25 +18,36 @@ module.exports = function (name, defaults, argv) {
     ? cc.json(defaults) : defaults
     ) || {}
 
-  var local = cc.find('.'+name+'rc')
-
   var env = cc.env(name + '_')
 
-  return deepExtend.apply(null, [
-    defaults,
-    win ? {} : cc.json(join(etc, name, 'config')),
-    win ? {} : cc.json(join(etc, name + 'rc')),
-    home ? cc.json(join(home, '.config', name, 'config')) : {},
-    home ? cc.json(join(home, '.config', name)) : {},
-    home ? cc.json(join(home, '.' + name, 'config')) : {},
-    home ? cc.json(join(home, '.' + name + 'rc')) : {},
-    cc.json(local),
-    local ? {config: local} : null,
-    env.config ? cc.json(env.config) : null,
-    argv.config ? cc.json(argv.config) : null,
+  var configs = [defaults]
+  var configFile
+  function addConfigFile (file) {
+    var fileConfig = cc.json(file)
+    if (fileConfig) {
+      configs.push(fileConfig)
+      configFile = file
+    }
+  }
+
+  // which files do we look at?
+  if (!win)
+   [join(etc, name, 'config'),
+    join(etc, name + 'rc')].forEach(addConfigFile)
+  if (home)
+   [join(home, '.config', name, 'config'),
+    join(home, '.config', name),
+    join(home, '.' + name, 'config'),
+    join(home, '.' + name + 'rc')].forEach(addConfigFile)
+  addConfigFile('.'+name+'rc')
+  if (env.config) addConfigFile(env.config)
+  if (argv.config) addConfigFile(argv.config)
+
+  return deepExtend.apply(null, configs.concat([
     env,
-    argv
-  ])
+    argv,
+    configFile ? {config: configFile} : null,
+  ]))
 }
 
 if(!module.parent) {
