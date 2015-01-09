@@ -29,5 +29,8 @@
     "deep-extend": "~0.2.5",
     "strip-json-comments": "0.1.x",
     "ini": "~1.3.0"
+  },
+  "devDependencies": {
+    "hjson": "^1.6.1"
   }
 }
