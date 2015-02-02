@@ -8,7 +8,7 @@ var home = win
            ? process.env.USERPROFILE
            : process.env.HOME
 
-module.exports = function (name, defaults, argv) {
+module.exports = function (name, defaults, argv, parse) {
   if('string' !== typeof name)
     throw new Error('rc(name): name *must* be string')
   if(!argv)
@@ -18,22 +18,29 @@ module.exports = function (name, defaults, argv) {
     ? cc.json(defaults) : defaults
     ) || {}
 
+  parse = parse || cc.parse
+
+  function file () {
+    var content = cc.file.apply(null, arguments)
+    return content ? parse(content) : null
+  }
+
   var local = cc.find('.'+name+'rc')
 
   var env = cc.env(name + '_')
 
   return deepExtend.apply(null, [
     defaults,
-    win ? {} : cc.json(join(etc, name, 'config')),
-    win ? {} : cc.json(join(etc, name + 'rc')),
-    home ? cc.json(join(home, '.config', name, 'config')) : {},
-    home ? cc.json(join(home, '.config', name)) : {},
-    home ? cc.json(join(home, '.' + name, 'config')) : {},
-    home ? cc.json(join(home, '.' + name + 'rc')) : {},
-    cc.json(local),
+    win ? {} : file(join(etc, name, 'config')),
+    win ? {} : file(join(etc, name + 'rc')),
+    home ? file(join(home, '.config', name, 'config')) : {},
+    home ? file(join(home, '.config', name)) : {},
+    home ? file(join(home, '.' + name, 'config')) : {},
+    home ? file(join(home, '.' + name + 'rc')) : {},
+    file(local),
     local ? {config: local} : null,
-    env.config ? cc.json(env.config) : null,
-    argv.config ? cc.json(argv.config) : null,
+    env.config ? file(env.config) : null,
+    argv.config ? file(argv.config) : null,
     env,
     argv
   ])
