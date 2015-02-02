@@ -117,6 +117,18 @@ You may pass in your own `argv` as the third argument to `rc`.  This is in case 
 require('rc')(appname, defaults, customArgvParser);
 ```
 
+## Pass in your own parser
+
+If you have a special need to use a non-standard parser,
+you can do so by passing in the parser as the 4th argument.
+(leave the 3rd as null to get the default args parser)
+
+```javascript
+require('rc')(appname, defaults, null, parser);
+```
+
+This may also be used to force a more strict format,
+such as strict, valid JSON only.
 
 ## Note on Performance
 
