@@ -50,7 +50,7 @@ so that sources **earlier** in this list override later ones.
 
 ## Configuration File Formats
 
-Configuration files (e.g. `.appnamerc`) may be in either [json](http://json.org/example) or [ini](http://en.wikipedia.org/wiki/INI_file) format. The example configurations below are equivalent:
+Configuration files (e.g. `.appnamerc`) may be in either [json](http://json.org/example), [Hjson](http://hjson.org/) or [ini](http://en.wikipedia.org/wiki/INI_file) format. The example configurations below are equivalent:
 
 
 #### Formatted as `ini`
@@ -102,6 +102,38 @@ dependsOn=0.10.0
 ```
 
 Comments are stripped from JSON config via [strip-json-comments](https://github.com/sindresorhus/strip-json-comments).
+
+#### Formatted as `Hjson`
+
+```hjson
+#hjson
+{
+  // Hjson does not fail on missing/trailing commas
+  // and other common JSON mistakes.
+  dependsOn: 0.10.0
+  commands:
+  {
+    www: ./commands/www
+    console: ./commands/repl
+  }
+  generators:
+  {
+    options:
+    {
+      engine: ejs
+    }
+    modules:
+    {
+      new: generate-new
+      backend: generate-backend
+    }
+  }
+}
+```
+
+The [Hjson](http://hjson.org/) parser is not a dependency of rc. The dependencies section of your package.json file must contain the `hjson` module in order to read and parse Hjson configs.
+
+Note the `#hjson` header is required.
 
 > Since ini, and env variables do not have a standard for types, your application needs be prepared for strings.
 
