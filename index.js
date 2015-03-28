@@ -25,6 +25,7 @@ module.exports = function (name, defaults, argv, parse) {
   var configs = [defaults]
   var configFiles = []
   function addConfigFile (file) {
+    if (configFiles.indexOf(file) >= 0) return
     var fileConfig = cc.file(file)
     if (fileConfig) {
       configs.push(parse(fileConfig))
