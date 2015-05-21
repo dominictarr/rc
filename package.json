@@ -11,6 +11,7 @@
     "type": "git",
     "url": "https://github.com/dominictarr/rc.git"
   },
+  "license": "(BSD-2-Clause OR MIT OR Apache-2.0)",
   "keywords": [
     "config",
     "rc",

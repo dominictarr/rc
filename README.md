@@ -146,4 +146,4 @@ such as strict, valid JSON only.
 
 ## License
 
-BSD / MIT / Apache2
+Multi-licensed under the two-clause BSD License, MIT License, or Apache License, version 2.0
