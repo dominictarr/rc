@@ -1,6 +1,6 @@
 {
   "name": "rc",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "hardwired configuration loader",
   "main": "index.js",
   "browserify": "browser.js",
@@ -11,7 +11,7 @@
     "type": "git",
     "url": "https://github.com/dominictarr/rc.git"
   },
-  "license": "(BSD-2-Clause OR MIT OR Apache-2.0)",
+  "license": "(BSD OR MIT OR Apache2)",
   "keywords": [
     "config",
     "rc",
@@ -20,7 +20,6 @@
   ],
   "bin": "./index.js",
   "author": "Dominic Tarr <dominic.tarr@gmail.com> (dominictarr.com)",
-  "license": "(BSD OR MIT OR Apache2)",
   "dependencies": {
     "minimist": "~0.0.7",
     "deep-extend": "~0.2.5",
