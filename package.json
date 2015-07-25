@@ -21,7 +21,7 @@
   "bin": "./index.js",
   "author": "Dominic Tarr <dominic.tarr@gmail.com> (dominictarr.com)",
   "dependencies": {
-    "minimist": "~0.0.7",
+    "minimist": "^1.1.2",
     "deep-extend": "~0.2.5",
     "strip-json-comments": "0.1.x",
     "ini": "~1.3.0"
