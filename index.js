@@ -8,7 +8,7 @@ var home = win
            ? process.env.USERPROFILE
            : process.env.HOME
 
-module.exports = function (name, defaults, argv, parse) {
+module.exports = function (name, defaults, argv, parse, dirLocator) {
   if('string' !== typeof name)
     throw new Error('rc(name): name *must* be string')
   if(!argv)
@@ -17,6 +17,8 @@ module.exports = function (name, defaults, argv, parse) {
       'string' === typeof defaults
     ? cc.json(defaults) : defaults
     ) || {}
+
+  dirLocator = dirLocator || process.cwd
 
   parse = parse || cc.parse
 
@@ -42,7 +44,7 @@ module.exports = function (name, defaults, argv, parse) {
     join(home, '.config', name),
     join(home, '.' + name, 'config'),
     join(home, '.' + name + 'rc')].forEach(addConfigFile)
-  addConfigFile(cc.find('.'+name+'rc'))
+  addConfigFile(cc.find('.'+name+'rc', dirLocator))
   if (env.config) addConfigFile(env.config)
   if (argv.config) addConfigFile(argv.config)
 
