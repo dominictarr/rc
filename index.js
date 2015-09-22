@@ -8,11 +8,11 @@ var home = win
            ? process.env.USERPROFILE
            : process.env.HOME
 
-module.exports = function (name, defaults, argv, parse) {
+module.exports = function (name, defaults, argv, parse, argt) {
   if('string' !== typeof name)
     throw new Error('rc(name): name *must* be string')
   if(!argv)
-    argv = require('minimist')(process.argv.slice(2))
+    argv = require('minimist')(process.argv.slice(2), argt)
   defaults = (
       'string' === typeof defaults
     ? cc.json(defaults) : defaults
