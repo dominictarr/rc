@@ -19,11 +19,6 @@ module.exports = function (name, defaults, argv, parse) {
   if (typeof defaults !== 'object' || Array.isArray(defaults)) {
       throw new Error('defaults has to be an object')
   }
-  
-  /*defaults = (
-      'string' === typeof defaults
-    ? cc.json(defaults) : defaults
-    ) || {}*/
 
   parse = parse || cc.parse
 
