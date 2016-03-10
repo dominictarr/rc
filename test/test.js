@@ -59,13 +59,18 @@ assert.equal(commentedJSON.config, jsonrc)
 assert.equal(commentedJSON.configs.length, 1)
 assert.equal(commentedJSON.configs[0], jsonrc)
 
-// check if passing a string as second param throws error
-var errorThrown = false;
-try {
-    rc(n, 'asdfas');
-}
-catch(err) {
-    errorThrown = true;
+// check if passing a somthing other than an object as second param throws error
+errorWorthyTypes = ['asdf', 1, [], function() { }]
+
+for (var i = 0; i < errorWorthyTypes.length; i++) {
+    var errorThrown = false;
+    try {
+        rc(n, errorWorthyTypes[i]);
+    }
+    catch (err) {
+        errorThrown = true;
+    }
+
+    assert(errorThrown, true)
 }
 
-assert(errorThrown, true)
