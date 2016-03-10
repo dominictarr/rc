@@ -57,3 +57,12 @@ assert.equal(commentedJSON.envOption, 42)
 assert.equal(commentedJSON.config, jsonrc)
 assert.equal(commentedJSON.configs.length, 1)
 assert.equal(commentedJSON.configs[0], jsonrc)
+
+// check if error is thrown for missing file passed through --config
+process.argv.push('--config', '.filedoesnotexistrc')
+
+assert.throws(
+    function() {
+        require('../')(n);
+    }
+);
