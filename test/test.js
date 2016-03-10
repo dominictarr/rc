@@ -59,7 +59,7 @@ assert.equal(commentedJSON.config, jsonrc)
 assert.equal(commentedJSON.configs.length, 1)
 assert.equal(commentedJSON.configs[0], jsonrc)
 
-// check if passing a somthing other than an object as second param throws error
+// check if passing something other than an object as second param throws error
 errorWorthyTypes = ['asdf', 1, [], function() { }]
 
 for (var i = 0; i < errorWorthyTypes.length; i++) {
