@@ -13,10 +13,17 @@ module.exports = function (name, defaults, argv, parse) {
     throw new Error('rc(name): name *must* be string')
   if(!argv)
     argv = require('minimist')(process.argv.slice(2))
-  defaults = (
+    
+  // make sure defaults has the right type
+  defaults = defaults || {};
+  if (typeof defaults !== 'object' || Array.isArray(defaults)) {
+      throw new Error('defaults has to be an object')
+  }
+  
+  /*defaults = (
       'string' === typeof defaults
     ? cc.json(defaults) : defaults
-    ) || {}
+    ) || {}*/
 
   parse = parse || cc.parse
 
