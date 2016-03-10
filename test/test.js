@@ -58,3 +58,14 @@ assert.equal(commentedJSON.envOption, 42)
 assert.equal(commentedJSON.config, jsonrc)
 assert.equal(commentedJSON.configs.length, 1)
 assert.equal(commentedJSON.configs[0], jsonrc)
+
+// check if passing a string as second param throws error
+var errorThrown = false;
+try {
+    rc(n, 'asdfas');
+}
+catch(err) {
+    errorThrown = true;
+}
+
+assert(errorThrown, true)
