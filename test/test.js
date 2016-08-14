@@ -2,6 +2,8 @@
 var n = 'rc'+Math.random()
 var assert = require('assert')
 
+console.log('---Main test---\n\n')
+
 process.env[n+'_envOption'] = 42
 
 var config = require('../')(n, {
