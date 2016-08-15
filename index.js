@@ -50,13 +50,16 @@ module.exports = function (name, defaults, argv, parsers) {
   })
   if (env.config) addConfigFile(env.config)
   if (argv.config) addConfigFile(argv.config)
-  
+
   return deepExtend.apply(null, configs.concat([
     env,
     argv,
     configFiles.length ? {configs: configFiles, config: configFiles[configFiles.length - 1]} : undefined,
   ]))
 }
+
+module.exports.parsers = cc.parsers;
+module.exports.parse = cc.parse;
 
 if(!module.parent) {
   console.log(
