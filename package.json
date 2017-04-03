@@ -1,6 +1,6 @@
 {
   "name": "rc",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "hardwired configuration loader",
   "main": "index.js",
   "browserify": "browser.js",
