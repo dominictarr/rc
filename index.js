@@ -36,13 +36,17 @@ module.exports = function (name, defaults, argv, parse) {
   // which files do we look at?
   if (!win)
    [join(etc, name, 'config'),
+    join(etc, name + 'config'),
     join(etc, name + 'rc')].forEach(addConfigFile)
-  if (home)
+  if (home) {
    [join(home, '.config', name, 'config'),
     join(home, '.config', name),
     join(home, '.' + name, 'config'),
+    join(home, '.' + name + 'config'),
     join(home, '.' + name + 'rc')].forEach(addConfigFile)
-  addConfigFile(cc.find('.'+name+'rc'))
+  }
+ [cc.find('.'+name+'config'),
+  cc.find('.'+name+'rc')].forEach(addConfigFile)
   if (env.config) addConfigFile(env.config)
   if (argv.config) addConfigFile(argv.config)
 
