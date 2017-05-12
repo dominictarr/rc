@@ -18,7 +18,7 @@
     "unix",
     "defaults"
   ],
-  "bin": "./index.js",
+  "bin": "./cli.js",
   "author": "Dominic Tarr <dominic.tarr@gmail.com> (dominictarr.com)",
   "dependencies": {
     "deep-extend": "~0.4.0",
