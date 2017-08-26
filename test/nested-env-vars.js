@@ -32,6 +32,7 @@ process.env[n+'_string__undefined'] = 'undefined'
 process.env[n+'_string__null'] = 'null'
 process.env[n+'_string__object'] = '{ "test": true }'
 process.env[n+'_string__array'] = '[1,2,3]'
+process.env[n+'_string__version'] = '0.10.0'
 
 function testPrefix(prefix) {
 	var config = require('../')(prefix, {
@@ -71,6 +72,8 @@ function testPrefix(prefix) {
 	assert.equal(typeof config.string.object, 'object')
 	assert.deepStrictEqual(config.string.array, [1, 2, 3])
 	assert.equal(typeof config.string.array, 'object')
+	assert.deepStrictEqual(config.string.version, '0.10.0')
+	assert.equal(typeof config.string.version, 'string')
 }
 
 testPrefix(n);
