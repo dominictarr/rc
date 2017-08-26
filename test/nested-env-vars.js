@@ -54,19 +54,19 @@ function testPrefix(prefix) {
 
 	assert.equal(config.test_upperCase, 187)
 
-	assert.equal(config.string.number, -0.2432423)
+	assert.strictEqual(config.string.number, -0.2432423)
 	assert.equal(typeof config.string.number, 'number')
-	assert.equal(config.string.boolean, false)
+	assert.strictEqual(config.string.boolean, false)
 	assert.equal(typeof config.string.boolean, 'boolean')
-	assert.equal(config.string.string, '_test')
+	assert.strictEqual(config.string.string, '_test')
 	assert.equal(typeof config.string.string, 'string')
-	assert.equal(config.string.empty, '')
+	assert.strictEqual(config.string.empty, '')
 	assert.equal(typeof config.string.empty, 'string')
-	assert.equal(config.string.undefined, 'undefined')
+	assert.strictEqual(config.string.undefined, 'undefined')
 	assert.equal(typeof config.string.undefined, 'string')
-	assert.equal(config.string.null, null)
+	assert.strictEqual(config.string.null, null)
 	assert.equal(typeof config.string.null, 'object')
-	assert.equal(config.string.object, '{ test: "true" }')
+	assert.strictEqual(config.string.object, '{ test: "true" }')
 	assert.equal(typeof config.string.object, 'string')
 }
 
