@@ -23,6 +23,15 @@ process.env[n+'___z__i__'] = 9999
 // should ignore case for config name section.
 process.env[N+'_test_upperCase'] = 187
 
+// Should parse strings
+process.env[n+'_string__number'] = '-0.2432423'
+process.env[n+'_string__boolean'] = 'false'
+process.env[n+'_string__string'] = '_test'
+process.env[n+'_string__empty'] = ''
+process.env[n+'_string__undefined'] = 'undefined'
+process.env[n+'_string__null'] = 'null'
+process.env[n+'_string__object'] = '{ test: "true" }'
+
 function testPrefix(prefix) {
 	var config = require('../')(prefix, {
 	  option: true
@@ -44,6 +53,21 @@ function testPrefix(prefix) {
 	assert.equal(config.z.i, 9999)
 
 	assert.equal(config.test_upperCase, 187)
+
+	assert.equal(config.string.number, -0.2432423)
+	assert.equal(typeof config.string.number, 'number')
+	assert.equal(config.string.boolean, false)
+	assert.equal(typeof config.string.boolean, 'boolean')
+	assert.equal(config.string.string, '_test')
+	assert.equal(typeof config.string.string, 'string')
+	assert.equal(config.string.empty, '')
+	assert.equal(typeof config.string.empty, 'string')
+	assert.equal(config.string.undefined, 'undefined')
+	assert.equal(typeof config.string.undefined, 'string')
+	assert.equal(config.string.null, null)
+	assert.equal(typeof config.string.null, 'object')
+	assert.equal(config.string.object, '{ test: "true" }')
+	assert.equal(typeof config.string.object, 'string')
 }
 
 testPrefix(n);
