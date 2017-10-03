@@ -23,6 +23,17 @@ process.env[n+'___z__i__'] = 9999
 // should ignore case for config name section.
 process.env[N+'_test_upperCase'] = 187
 
+// Should parse strings
+process.env[n+'_string__number'] = '-0.2432423'
+process.env[n+'_string__boolean'] = 'false'
+process.env[n+'_string__string'] = '_test'
+process.env[n+'_string__empty'] = ''
+process.env[n+'_string__undefined'] = 'undefined'
+process.env[n+'_string__null'] = 'null'
+process.env[n+'_string__object'] = '{ "test": true }'
+process.env[n+'_string__array'] = '[1,2,3]'
+process.env[n+'_string__version'] = '0.10.0'
+
 function testPrefix(prefix) {
 	var config = require('../')(prefix, {
 	  option: true
@@ -44,6 +55,25 @@ function testPrefix(prefix) {
 	assert.equal(config.z.i, 9999)
 
 	assert.equal(config.test_upperCase, 187)
+
+	assert.strictEqual(config.string.number, -0.2432423)
+	assert.equal(typeof config.string.number, 'number')
+	assert.strictEqual(config.string.boolean, false)
+	assert.equal(typeof config.string.boolean, 'boolean')
+	assert.strictEqual(config.string.string, '_test')
+	assert.equal(typeof config.string.string, 'string')
+	assert.strictEqual(config.string.empty, '')
+	assert.equal(typeof config.string.empty, 'string')
+	assert.strictEqual(config.string.undefined, 'undefined')
+	assert.equal(typeof config.string.undefined, 'string')
+	assert.strictEqual(config.string.null, null)
+	assert.equal(typeof config.string.null, 'object')
+	assert.deepStrictEqual(config.string.object, { test: true })
+	assert.equal(typeof config.string.object, 'object')
+	assert.deepStrictEqual(config.string.array, [1, 2, 3])
+	assert.equal(typeof config.string.array, 'object')
+	assert.deepStrictEqual(config.string.version, '0.10.0')
+	assert.equal(typeof config.string.version, 'string')
 }
 
 testPrefix(n);
