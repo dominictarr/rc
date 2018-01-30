@@ -40,7 +40,7 @@ appCfg.config // same as appCfg.configs[appCfg.configs.length - 1]
 
 Given your application name (`appname`), rc will look in all the obvious places for configuration.
 
-  * command line arguments (parsed by minimist)
+  * command line arguments, parsed by minimist _(e.g. `--foo baz`, also nested: `--foo.bar=baz`)_
   * environment variables prefixed with `${appname}_`
     * or use "\_\_" to indicate nested properties <br/> _(e.g. `appname_foo__bar__baz` => `foo.bar.baz`)_
   * if you passed an option `--config file` then from that file
