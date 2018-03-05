@@ -51,6 +51,10 @@ Given your application name (`appname`), rc will look in all the obvious places 
   * `$HOME/.config/${appname}/config`
   * `/etc/${appname}rc`
   * `/etc/${appname}/config`
+  * `/etc/${appname}.config`
+  * `/usr/local/etc/${appname}rc`
+  * `/usr/local/etc/${appname}/config`
+  * `/usr/local/etc/${appname}.config`
   * the defaults object you passed in.
 
 All configuration sources that were found will be flattened into one object,
