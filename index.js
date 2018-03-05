@@ -39,7 +39,7 @@ module.exports = function (name, defaults, argv, parse) {
     join(etc, name + 'rc'),
     join(etc, name + '.config'),
     join(localEtc, name, 'config'),
-    join(localEtc, name + 'rc')
+    join(localEtc, name + 'rc'),
     join(localEtc, name + '.config')].forEach(addConfigFile)
   if (home)
    [join(home, '.config', name, 'config'),
