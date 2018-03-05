@@ -2,6 +2,7 @@ var cc   = require('./lib/utils')
 var join = require('path').join
 var deepExtend = require('deep-extend')
 var etc = '/etc'
+var localEtc = '/usr/local/etc'
 var win = process.platform === "win32"
 var home = win
            ? process.env.USERPROFILE
@@ -35,7 +36,11 @@ module.exports = function (name, defaults, argv, parse) {
   // which files do we look at?
   if (!win)
    [join(etc, name, 'config'),
-    join(etc, name + 'rc')].forEach(addConfigFile)
+    join(etc, name + 'rc'),
+    join(etc, name + '.config'),
+    join(localEtc, name, 'config'),
+    join(localEtc, name + 'rc')
+    join(localEtc, name + '.config')].forEach(addConfigFile)
   if (home)
    [join(home, '.config', name, 'config'),
     join(home, '.config', name),
