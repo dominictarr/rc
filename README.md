@@ -114,7 +114,7 @@ Comments are stripped from JSON config via [strip-json-comments](https://github.
 
 > Since ini, and env variables do not have a standard for types, your application needs be prepared for strings.
 
-To ensure that booleans and numbers are always converted into their proper types (especially useful if you intend to do strict `===` comparisons), consider using a module such as [parse-strings-in-object](https://github.com/anselanza/parse-strings-in-object) to wrap the config object returned from rc.
+To ensure that string representations of booleans and numbers are always converted into their proper types (especially useful if you intend to do strict `===` comparisons), consider using a module such as [parse-strings-in-object](https://github.com/anselanza/parse-strings-in-object) to wrap the config object returned from rc.
 
 
 ## Simple example demonstrating precedence
