@@ -1,6 +1,6 @@
 # rc
 
-The non-configurable configuration loader for lazy people.
+The non-configurable configuration loader for lazy noders.
 
 ## Usage
 
