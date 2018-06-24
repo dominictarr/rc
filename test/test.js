@@ -1,10 +1,11 @@
+var rc = require('../');
 
 var n = 'rc'+Math.random()
 var assert = require('assert')
 
 process.env[n+'_envOption'] = 42
 
-var config = require('../')(n, {
+var config = rc(n, {
   option: true
 })
 
@@ -13,7 +14,7 @@ console.log(config)
 assert.equal(config.option, true)
 assert.equal(config.envOption, 42)
 
-var customArgv = require('../')(n, {
+var customArgv = rc(n, {
   option: true
 }, { // nopt-like argv
   option: false,
@@ -43,7 +44,7 @@ fs.writeFileSync(jsonrc, [
   '}'
 ].join('\n'));
 
-var commentedJSON = require('../')(n, {
+var commentedJSON = rc(n, {
   option: true
 })
 
@@ -57,3 +58,19 @@ assert.equal(commentedJSON.envOption, 42)
 assert.equal(commentedJSON.config, jsonrc)
 assert.equal(commentedJSON.configs.length, 1)
 assert.equal(commentedJSON.configs[0], jsonrc)
+
+// check if passing something other than an object as second param throws error
+errorWorthyTypes = ['asdf', 1, [], function() { }]
+
+for (var i = 0; i < errorWorthyTypes.length; i++) {
+    var errorThrown = false;
+    try {
+        rc(n, errorWorthyTypes[i]);
+    }
+    catch (err) {
+        errorThrown = true;
+    }
+
+    assert(errorThrown, true)
+}
+
