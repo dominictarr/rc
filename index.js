@@ -23,9 +23,9 @@ module.exports = function (name, defaults, argv, parse) {
 
   var configs = [defaults]
   var configFiles = []
-  function addConfigFile (file) {
+  function addConfigFile (file, throwError) {
     if (configFiles.indexOf(file) >= 0) return
-    var fileConfig = cc.file(file)
+    var fileConfig = cc.file(file, throwError)
     if (fileConfig) {
       configs.push(parse(fileConfig))
       configFiles.push(file)
@@ -42,8 +42,8 @@ module.exports = function (name, defaults, argv, parse) {
     join(home, '.' + name, 'config'),
     join(home, '.' + name + 'rc')].forEach(addConfigFile)
   addConfigFile(cc.find('.'+name+'rc'))
-  if (env.config) addConfigFile(env.config)
-  if (argv.config) addConfigFile(argv.config)
+  if (env.config) addConfigFile(env.config, true)
+  if (argv.config) addConfigFile(argv.config, true)
 
   return deepExtend.apply(null, configs.concat([
     env,
