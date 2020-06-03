@@ -190,7 +190,7 @@ Here is the expected output from various commands:
   ]
 }
 ```
-*Now the `port` comes from the `config.json` file specified (overriding the value from `.myapprc`), and `foo` value is overriden by command-line despite also being specified in the `config.json` file.*
+*Now the `port` comes from the `config.json` file specified (overriding the value from `.myapprc`), and `foo` value is overridden by command-line despite also being specified in the `config.json` file.*
  
 
 
