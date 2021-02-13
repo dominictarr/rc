@@ -119,7 +119,7 @@ To ensure that string representations of booleans and numbers are always convert
 
 ## Simple example demonstrating precedence
 Assume you have an application like this (notice the hard-coded defaults passed to rc):
-```
+```js
 const conf = require('rc')('myapp', {
     port: 12345,
     mode: 'test'
@@ -128,7 +128,7 @@ const conf = require('rc')('myapp', {
 console.log(JSON.stringify(conf, null, 2));
 ```
 You also have a file `config.json`, with these contents:
-```
+```json
 {
   "port": 9000,
   "foo": "from config json",
@@ -136,7 +136,7 @@ You also have a file `config.json`, with these contents:
 }
 ```
 And a file `.myapprc` in the same folder, with these contents:
-```
+```json
 {
   "port": "3001",
   "foo": "bar"
@@ -145,7 +145,7 @@ And a file `.myapprc` in the same folder, with these contents:
 Here is the expected output from various commands:
 
 `node .`
-```
+```json
 {
   "port": "3001",
   "mode": "test",
@@ -161,7 +161,7 @@ Here is the expected output from various commands:
 
 
 `node . --foo baz`
-```
+```json
 {
   "port": "3001",
   "mode": "test",
@@ -176,7 +176,7 @@ Here is the expected output from various commands:
 *Same result as above but `foo` is overridden because command-line arguments take precedence over `.myapprc` file.*
 
 `node . --foo barbar --config config.json`
-```
+```json
 {
   "port": 9000,
   "mode": "test",
